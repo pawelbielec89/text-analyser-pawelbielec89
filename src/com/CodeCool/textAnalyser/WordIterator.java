@@ -1,12 +1,12 @@
 import java.util.Iterator;
 
 public class WordIterator implements Iterator {
-    private String content;
     private int index;
     String[] words;
 
     WordIterator(FileContent file){
-        content = file.getFileContent();
+        String content = file.getFileContent();
+        content.replaceAll("\n"," ");
         words = content.split("\\W+");
     }
 
@@ -14,5 +14,10 @@ public class WordIterator implements Iterator {
     public boolean hasNext() {return index< words.length;    }
 
     @Override
-    public Object next() {return words[index++];}
+    public String next() {return words[index++];}
+
+    @Override
+    public void remove() {
+        this.index = 0;
+    }
 }

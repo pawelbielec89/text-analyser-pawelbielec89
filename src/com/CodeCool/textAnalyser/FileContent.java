@@ -14,12 +14,12 @@ public class FileContent implements IterableText {
 
             String sCurrentLine;
             while ((sCurrentLine = br.readLine()) != null) {
-                contentBuilder.append(sCurrentLine);
+                contentBuilder.append(sCurrentLine + "\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        content += contentBuilder.toString();
+        content = contentBuilder.toString();
     }
 
     public Iterator<String> charIterator() {
@@ -33,7 +33,7 @@ public class FileContent implements IterableText {
     }
 
     String getFileName() {
-        return this.fileName;
+        return "==" + this.fileName + "==";
     }
 
     String getFileContent() {
