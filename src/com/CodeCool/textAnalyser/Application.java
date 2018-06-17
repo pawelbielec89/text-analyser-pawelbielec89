@@ -6,6 +6,8 @@ public class Application {
         if (args.length == 0) {
             view.print("No arguments given.");
         } else {
+            long start = System.nanoTime();
+
             for (String fileName : args) {
                 FileContent file = new FileContent(fileName);
                 StatisticalAnalysis words = new StatisticalAnalysis(file.wordIterator());
@@ -34,7 +36,10 @@ public class Application {
                 System.out.println(alphabetCounts.toString());
 
             }
-
+            long elapsedTime = System.nanoTime() - start;
+            System.out.println(elapsedTime);
+            float timeResult = (float) elapsedTime/1000000000;
+            System.out.println("Benchmark time: " + timeResult);
         }
     }
 }
